@@ -39,11 +39,13 @@ router.get("/", function (request, response, next) {
       //
       if(result){
         res.send({
-                result: "Registered Successfully",
-              }); 
+          status:200,
+          result: "Registered Successfully",
+        }); 
       }
       else if(error['code'] == 11000){
         res.send({
+          status: 400,
           result: "User Already Registered",
         });
     }
@@ -99,6 +101,7 @@ router.get("/", function (request, response, next) {
       //
       if(result){
         res.send({
+                status:200,
                 result: "Bank Details Added Successfully",
         }); 
       }
@@ -117,7 +120,7 @@ router.get("/", function (request, response, next) {
     if (response.length == 0) {
         res.send({
           "status": 404,
-          "message": "User Not Found"        
+          "message": "Bank Details Not Found"        
         });
     } else {
       let accountno = response[0].AccountName;
